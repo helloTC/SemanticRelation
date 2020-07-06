@@ -43,6 +43,9 @@ def pearsonr(A, B):
 def dnn_activation(data, model, layer_loc, channels=None):
     """
     Extract DNN activation from the specified layer
+    This code is from the DNNBrain toolbox https://github.com/BNUCNL/dnnbrain
+    For readability, I separate it from the DNNBrain and directly call it for activation.
+    
 
     Parameters:
     ----------
@@ -59,10 +62,8 @@ def dnn_activation(data, model, layer_loc, channels=None):
     """
     # change to eval mode
     model.eval()
-
     # prepare dnn activation hook
     dnn_acts = []
-
     def hook_act(module, input, output):
         act = output.detach().numpy().copy()
         if channels is not None:
@@ -73,11 +74,9 @@ def dnn_activation(data, model, layer_loc, channels=None):
     for k in layer_loc:
         module = module._modules[k]
     hook_handle = module.register_forward_hook(hook_act)
-
     # extract dnn activation
     model(data)
     dnn_acts = dnn_acts[0]
-
     hook_handle.remove()
     return dnn_acts
 
