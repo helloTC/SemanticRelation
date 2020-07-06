@@ -3,8 +3,6 @@
 from nltk.corpus import wordnet as wn
 from os.path import join as pjoin
 import numpy as np
-from ATT.algorithm import tools
-from ATT.iofunc import iofiles
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 def load_word_reference(word_reference, swapkeys=False):
