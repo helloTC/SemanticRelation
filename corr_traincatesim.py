@@ -6,6 +6,9 @@ from scipy import stats
 from scipy import io as sio
 import matplotlib.pyplot as plt
 
+# RDM for each training stage was not provided in this repo. 
+# Please contact to the author (Taicheng Huang) for these RDMs or you can re-train an AlexNet following code of train_model.py
+
 parpath = 'E:\home-work-2020\semantic representation\code'
 cnnsim_wordnet = np.load(('cate_pathsim_wup.npy'), allow_pickle=True)
 

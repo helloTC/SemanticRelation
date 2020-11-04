@@ -1,7 +1,7 @@
 import torch
 from torchvision import models, transforms, datasets
 import os
-from scipy import stats
+from scipy import stats, special
 import numpy as np
 from dnnbrain.dnn import analyzer as dnn_analyzer
 
@@ -86,13 +86,13 @@ if __name__ == '__main__':
     transform = transforms.Compose([transforms.Resize((224,224)), transforms.ToTensor(), transforms.Normalize(mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225])])
 
     # Extract activation
-    layer_loc = ('features', '18')
+    layer_loc = [('fc')]
     imagefolder = datasets.ImageFolder(parpath, transform=transform)
-    dataloader = torch.utils.data.DataLoader(imagefolder, batch_size=50, shuffle=False)
+    dataloader = torch.utils.data.DataLoader(imagefolder, batch_size=50, shuffle=False, num_workers=30)
 
-    # cnnmodel = models.alexnet(pretrained=False)
-    cnnmodel = models.vgg11(pretrained=False)
-    cnnmodel.load_state_dict(torch.load('/nfs/s2/dnn_models/vgg11_param.pth'))
+    cnnmodel = models.alexnet(pretrained=False)
+    # Could be directly downloaded from pytorch by setting pretrained=True
+    cnnmodel.load_state_dict(torch.load('/nfs/a1/userhome/huangtaicheng/workingdir/models/DNNmodel_param/alexnet.pth'))
     cnnmodel.eval()
 
     output_act = []
@@ -102,15 +102,15 @@ if __name__ == '__main__':
         print('Iterate {}'.format(i+1))
         outact = dnn_activation(image, cnnmodel, layer_loc)
         # FC
-        # outact_mean = outact.mean(axis=0)
+        outact = outact.mean(axis=0)
         # Conv
-        outact = np.mean(outact,axis=0)
-        outact = outact.reshape(outact.shape[0], outact.shape[1]*outact.shape[2])
+        # outact = np.mean(outact,axis=0)
+        # outact = outact.reshape(outact.shape[0], outact.shape[1]*outact.shape[2])
         output_act.append(outact)
         # break
     output_act = np.array(output_act)
     r, _ = pearsonr(output_act.reshape(1000,-1), output_act.reshape(1000,-1))
-    np.save('../../data/imagenet/validation_corr_vgg11_conv8.npy', r)
+    np.save('data/DCNNsim/valiation_corr_alexnet_fc.npy', r)
 
 
 
