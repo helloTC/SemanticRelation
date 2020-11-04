@@ -11,7 +11,7 @@ from cnntools import cnntools
 from ATT.algorithm import tools
 
 # Note that the single-object images and parameters of AlexNet were not provided in this repo.
-# Please contact to the author (Taicheng Huang) for images or paramters if you want to replicate our results.
+# Please contact the author (Taicheng Huang) for images or paramters if you want to replicate our results.
 
 parpath = '/nfs/a1/userhome/huangtaicheng/workingdir/data'
 imgpath_single = '/nfs/a1/userhome/huangtaicheng/workingdir/data/ImageNet_boundingbox/ILSVRC1000_val_thrimg'
