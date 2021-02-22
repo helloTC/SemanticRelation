@@ -19,4 +19,7 @@ Data was provided in folder: data.
 - DevelopTraj: developmental trajectory for the original AlexNet and the single-object AlexNet. Values from them are correspondences to the WordNet semantic similarity in different training stages.
 - TaskDemand: Averaged responses of AlexNet-Cate2, AlexNet-Cate19 and AlexNet-Cate1000 in different layers. Responses are formatted as [Category x Units].
 
+This paper has been published in Frontiers in Computational Neuroscience:
+Huang T, Zhen Z and Liu J (2021) Semantic Relatedness Emerges in Deep Convolutional Neural Networks Designed for Object Recognition. Front. Comput. Neurosci. 15:625804. doi: 10.3389/fncom.2021.625804
+
 Feel free to contact me if you have any questions :)
