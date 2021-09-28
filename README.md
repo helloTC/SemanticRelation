@@ -23,3 +23,5 @@ This paper has been published in Frontiers in Computational Neuroscience:
 Huang T, Zhen Z and Liu J (2021) Semantic Relatedness Emerges in Deep Convolutional Neural Networks Designed for Object Recognition. Front. Comput. Neurosci. 15:625804. doi: 10.3389/fncom.2021.625804
 
 Feel free to contact me if you have any questions :)
+
+This paper has finally published in [*Frontiers in Computational Neuroscience* doi: 10.3389/fncom.2021.625804](https://www.frontiersin.org/articles/10.3389/fncom.2021.625804/full)
